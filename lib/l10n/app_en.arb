@@ -1,0 +1,26 @@
+{
+  "@@locale": "en",
+  "appTitle": "Pawsure ({environment})",
+  "@appTitle": {
+    "placeholders": {
+      "environment": {
+        "type": "String"
+      }
+    }
+  },
+  "homeTitle": "Overview",
+  "homeWelcomeTitle": "Welcome to Pawsure ({environment})",
+  "@homeWelcomeTitle": {
+    "placeholders": {
+      "environment": {
+        "type": "String"
+      }
+    }
+  },
+  "homeWelcomeDescription": "Keep track of your coverage and activity across environments.",
+  "currentBaseUrlLabel": "Current API base URL",
+  "permissionDeniedTitle": "Access restricted",
+  "permissionDeniedDescription": "You do not have permission to view this section.",
+  "genericErrorTitle": "Something went wrong",
+  "genericErrorDescription": "Please try again later or contact support."
+}

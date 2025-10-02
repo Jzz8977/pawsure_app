@@ -1,0 +1,26 @@
+{
+  "@@locale": "zh",
+  "appTitle": "Pawsure（{environment}）",
+  "@appTitle": {
+    "placeholders": {
+      "environment": {
+        "type": "String"
+      }
+    }
+  },
+  "homeTitle": "总览",
+  "homeWelcomeTitle": "欢迎使用 Pawsure（{environment}）",
+  "@homeWelcomeTitle": {
+    "placeholders": {
+      "environment": {
+        "type": "String"
+      }
+    }
+  },
+  "homeWelcomeDescription": "在这里查看不同环境下的保障与业务状态。",
+  "currentBaseUrlLabel": "当前 API 基础地址",
+  "permissionDeniedTitle": "无访问权限",
+  "permissionDeniedDescription": "你没有访问该页面的权限。",
+  "genericErrorTitle": "发生错误",
+  "genericErrorDescription": "稍后再试或联系支持团队。"
+}
