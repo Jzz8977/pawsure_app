@@ -1,0 +1,6 @@
+arb-dir: lib/l10n
+output-dir: lib/l10n
+template-arb-file: app_en.arb
+template-arb-locale: en
+untranslated-messages-file: l10n_untranslated.json
+use-escaping: true

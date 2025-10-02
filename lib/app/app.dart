@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:pawsure_app/l10n/app_localizations.dart';
 
 import 'env/app_env_provider.dart';
 import 'l10n/l10n.dart';
