@@ -40,9 +40,9 @@ flutter analyze
 # 运行测试
 flutter test
 
-# Generate i18n
-# 生成国际化
-flutter pub run intl_utils:generate
+# Generate i18n (must run after modifying ARB files)
+# 生成国际化（修改 ARB 文件后必须运行）
+flutter gen-l10n
 ```
 
 ## Architecture
@@ -146,14 +146,32 @@ Theme.of(context).radii.md
 **Routing**:
 *路由：*
 
-Routes defined in `lib/app/router/app_router.dart`.
-*路由定义在 `lib/app/router/app_router.dart`。*
+Routes defined in `lib/app/router/app_router.dart` using ShellRoute for tab navigation.
+*路由定义在 `lib/app/router/app_router.dart`，使用 ShellRoute 实现标签页导航。*
 
 Add route abilities in `_routeAbilities` map for permission guards.
 *在 `_routeAbilities` 映射中添加路由能力以实现权限守卫。*
 
 Navigate with `context.go()` or `context.pushNamed()`.
 *使用 `context.go()` 或 `context.pushNamed()` 进行导航。*
+
+**Role-Based Navigation**:
+*基于角色的导航：*
+
+App supports two user roles via `UserRoleController`:
+*应用通过 `UserRoleController` 支持两种用户角色：*
+
+- **User role**: Shows tabs for Home (首页), Pet (宠物), My (我的)
+  *用户角色：显示首页、宠物、我的标签页*
+
+- **Provider role**: Shows tabs for Provider Home (服务者首页), Order (订单), Provider My (我的)
+  *服务者角色：显示服务者首页、订单、我的标签页*
+
+Navigation items defined in `NavigationConfig` class; icons from `assets/icons/`.
+*导航项定义在 `NavigationConfig` 类中；图标来自 `assets/icons/`。*
+
+Bottom navigation bar is floating (positioned, not layout-occupying) with backdrop blur.
+*底部导航栏为浮动式（定位，不占据布局空间）并带有背景模糊效果。*
 
 **Permissions**:
 *权限：*
@@ -286,4 +304,66 @@ Entry point: `lib/main.dart` reads `APP_FLAVOR` from compile-time define, then c
 
 - `lib/shared/services/permission_service.dart`: Ability-based permissions
   *基于能力的权限*
-- 一直按照这个文件的规定来生成代码'/Users/jon/workplace/pawsure_app/项目约束.md'
+
+- `lib/core/auth/user_role.dart`: User role enum (user/provider)
+  *用户角色枚举（用户/服务者）*
+
+- `lib/features/main/presentation/main_container_page.dart`: Main container with floating tab bar
+  *主容器页面，带浮动标签栏*
+
+- `lib/shared/widgets/app_bottom_navigation_bar.dart`: Floating navigation bar with blur effect
+  *带模糊效果的浮动导航栏*
+
+## UI Patterns
+*UI 模式*
+
+**Floating Navigation Bar**:
+*浮动导航栏：*
+
+The app uses a floating bottom navigation bar that doesn't occupy layout space. It's positioned above content using Stack/Positioned widgets with backdrop blur and rounded capsule shape.
+*应用使用不占据布局空间的浮动底部导航栏。它使用 Stack/Positioned 组件定位在内容上方，带有背景模糊和圆角胶囊形状。*
+
+**Custom ScrollView with SliverAppBar**:
+*自定义滚动视图和 SliverAppBar：*
+
+Complex pages (e.g., My page) use CustomScrollView with SliverAppBar for collapsing gradient headers and efficient scrolling of multiple sections.
+*复杂页面（如我的页面）使用 CustomScrollView 和 SliverAppBar 实现可折叠的渐变标题和多个部分的高效滚动。*
+
+**OTP Input**:
+*OTP 输入：*
+
+Verification code input uses visual slot display with hidden TextField for better UX (`lib/shared/widgets/otp_input.dart`).
+*验证码输入使用可视化槽位显示和隐藏的 TextField 以获得更好的用户体验（`lib/shared/widgets/otp_input.dart`）。*
+
+## Asset Organization
+*资源组织*
+
+- SVG icons: `assets/icons/` (used with flutter_svg)
+  *SVG 图标：`assets/icons/`（配合 flutter_svg 使用）*
+
+- Images by feature: `assets/images/{feature}/` (e.g., `assets/images/my/`)
+  *按功能分类的图片：`assets/images/{feature}/`（例如：`assets/images/my/`）*
+
+## Constraints Reference
+*约束参考*
+
+Always follow rules in `/Users/jon/workplace/pawsure_app/项目约束.md`:
+*始终遵循 `/Users/jon/workplace/pawsure_app/项目约束.md` 中的规则：*
+
+- Output format: File path + code block only (no explanations)
+  *输出格式：仅文件路径 + 代码块（无解释文字）*
+
+- All UI components get tokens from ThemeExtension (no hardcoded colors/radii)
+  *所有 UI 组件从 ThemeExtension 获取令牌（禁止硬编码颜色/半径）*
+
+- Pages must use Riverpod state management with loading/success/error rendering
+  *页面必须使用 Riverpod 状态管理并按 loading/success/error 渲染*
+
+- Network layer: Repositories return ApiResult only (never Dio.Response)
+  *网络层：仓库仅返回 ApiResult（永不返回 Dio.Response）*
+
+- i18n: All text in ARB files (provide both app_en.arb and app_zh.arb updates)
+  *国际化：所有文本存入 ARB 文件（同时提供 app_en.arb 和 app_zh.arb 更新）*
+
+- Acceptance criteria: Zero `flutter analyze` warnings; files ready to paste and run
+  *验收标准：`flutter analyze` 零警告；文件可直接粘贴运行*
