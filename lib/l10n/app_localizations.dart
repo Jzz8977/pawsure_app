@@ -151,6 +151,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please try again later or contact support.'**
   String get genericErrorDescription;
+
+  /// No description provided for @navHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get navHome;
+
+  /// No description provided for @navPet.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet'**
+  String get navPet;
+
+  /// No description provided for @navMy.
+  ///
+  /// In en, this message translates to:
+  /// **'My'**
+  String get navMy;
+
+  /// No description provided for @navProviderHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Provider Home'**
+  String get navProviderHome;
+
+  /// No description provided for @navOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Order'**
+  String get navOrder;
+
+  /// No description provided for @petTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet'**
+  String get petTitle;
+
+  /// No description provided for @petWelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet Page'**
+  String get petWelcome;
+
+  /// No description provided for @myTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My'**
+  String get myTitle;
+
+  /// No description provided for @myWelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'My Page'**
+  String get myWelcome;
+
+  /// No description provided for @currentRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Role: {role}'**
+  String currentRole(String role);
+
+  /// No description provided for @roleUser.
+  ///
+  /// In en, this message translates to:
+  /// **'User'**
+  String get roleUser;
+
+  /// No description provided for @roleProvider.
+  ///
+  /// In en, this message translates to:
+  /// **'Provider'**
+  String get roleProvider;
+
+  /// No description provided for @switchRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch Role'**
+  String get switchRole;
+
+  /// No description provided for @providerHomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Provider Home'**
+  String get providerHomeTitle;
+
+  /// No description provided for @providerHomeWelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Provider Home Page'**
+  String get providerHomeWelcome;
+
+  /// No description provided for @orderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Order'**
+  String get orderTitle;
+
+  /// No description provided for @orderWelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Page'**
+  String get orderWelcome;
 }
 
 class _AppLocalizationsDelegate

@@ -41,4 +41,57 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get genericErrorDescription =>
       'Please try again later or contact support.';
+
+  @override
+  String get navHome => 'Home';
+
+  @override
+  String get navPet => 'Pet';
+
+  @override
+  String get navMy => 'My';
+
+  @override
+  String get navProviderHome => 'Provider Home';
+
+  @override
+  String get navOrder => 'Order';
+
+  @override
+  String get petTitle => 'Pet';
+
+  @override
+  String get petWelcome => 'Pet Page';
+
+  @override
+  String get myTitle => 'My';
+
+  @override
+  String get myWelcome => 'My Page';
+
+  @override
+  String currentRole(String role) {
+    return 'Current Role: $role';
+  }
+
+  @override
+  String get roleUser => 'User';
+
+  @override
+  String get roleProvider => 'Provider';
+
+  @override
+  String get switchRole => 'Switch Role';
+
+  @override
+  String get providerHomeTitle => 'Provider Home';
+
+  @override
+  String get providerHomeWelcome => 'Provider Home Page';
+
+  @override
+  String get orderTitle => 'Order';
+
+  @override
+  String get orderWelcome => 'Order Page';
 }

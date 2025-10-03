@@ -38,4 +38,57 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get genericErrorDescription => '稍后再试或联系支持团队。';
+
+  @override
+  String get navHome => '首页';
+
+  @override
+  String get navPet => '宠物';
+
+  @override
+  String get navMy => '我的';
+
+  @override
+  String get navProviderHome => '服务者首页';
+
+  @override
+  String get navOrder => '订单';
+
+  @override
+  String get petTitle => '宠物';
+
+  @override
+  String get petWelcome => '宠物页面';
+
+  @override
+  String get myTitle => '我的';
+
+  @override
+  String get myWelcome => '我的页面';
+
+  @override
+  String currentRole(String role) {
+    return '当前角色：$role';
+  }
+
+  @override
+  String get roleUser => '用户';
+
+  @override
+  String get roleProvider => '服务者';
+
+  @override
+  String get switchRole => '切换角色';
+
+  @override
+  String get providerHomeTitle => '服务者首页';
+
+  @override
+  String get providerHomeWelcome => '服务者首页';
+
+  @override
+  String get orderTitle => '订单';
+
+  @override
+  String get orderWelcome => '订单页面';
 }

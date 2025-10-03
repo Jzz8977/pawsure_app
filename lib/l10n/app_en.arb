@@ -22,5 +22,29 @@
   "permissionDeniedTitle": "Access restricted",
   "permissionDeniedDescription": "You do not have permission to view this section.",
   "genericErrorTitle": "Something went wrong",
-  "genericErrorDescription": "Please try again later or contact support."
+  "genericErrorDescription": "Please try again later or contact support.",
+  "navHome": "Home",
+  "navPet": "Pet",
+  "navMy": "My",
+  "navProviderHome": "Provider Home",
+  "navOrder": "Order",
+  "petTitle": "Pet",
+  "petWelcome": "Pet Page",
+  "myTitle": "My",
+  "myWelcome": "My Page",
+  "currentRole": "Current Role: {role}",
+  "@currentRole": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "roleUser": "User",
+  "roleProvider": "Provider",
+  "switchRole": "Switch Role",
+  "providerHomeTitle": "Provider Home",
+  "providerHomeWelcome": "Provider Home Page",
+  "orderTitle": "Order",
+  "orderWelcome": "Order Page"
 }

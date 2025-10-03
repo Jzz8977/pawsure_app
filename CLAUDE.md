@@ -286,3 +286,4 @@ Entry point: `lib/main.dart` reads `APP_FLAVOR` from compile-time define, then c
 
 - `lib/shared/services/permission_service.dart`: Ability-based permissions
   *基于能力的权限*
+- 一直按照这个文件的规定来生成代码'/Users/jon/workplace/pawsure_app/项目约束.md'
