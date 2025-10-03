@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../app/l10n/l10n.dart';
 import '../../../app/router/app_router.dart';
 import '../../../app/theme/app_theme.dart';
+import '../../../core/auth/auth_controller.dart';
 import '../../../core/auth/user_role.dart';
 import '../../../core/auth/user_role_controller.dart';
 
@@ -15,8 +16,12 @@ class MyPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final spacing = theme.spacing;
-    final colors = theme.colors;
     final radii = theme.radii;
+    final authState = ref.watch(authControllerProvider);
+    final isAuthenticated = authState.maybeWhen(
+      data: (data) => data.isAuthenticated,
+      orElse: () => false,
+    );
     final currentRole = ref.watch(userRoleControllerProvider);
 
     return Scaffold(
@@ -54,44 +59,53 @@ class MyPage extends ConsumerWidget {
                         Row(
                           children: [
                             // 头像
-                            Container(
-                              width: 55,
-                              height: 55,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: Colors.white.withValues(alpha: 0.6),
-                                  width: 2,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withValues(alpha: 0.08),
-                                    blurRadius: 9,
-                                    offset: const Offset(0, 3),
+                            GestureDetector(
+                              onTap: isAuthenticated
+                                  ? null
+                                  : () => context.pushNamed(AppRouteName.phoneLogin),
+                              child: Container(
+                                width: 55,
+                                height: 55,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.white.withValues(alpha: 0.6),
+                                    width: 2,
                                   ),
-                                ],
-                              ),
-                              child: const CircleAvatar(
-                                radius: 55,
-                                backgroundImage: AssetImage('assets/images/my/home.png'),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withValues(alpha: 0.08),
+                                      blurRadius: 9,
+                                      offset: const Offset(0, 3),
+                                    ),
+                                  ],
+                                ),
+                                child: const CircleAvatar(
+                                  radius: 55,
+                                  backgroundImage: AssetImage('assets/images/my/home.png'),
+                                ),
                               ),
                             ),
                             SizedBox(width: spacing.md),
                             // 用户信息
                             Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        context.l10n.clickToLogin,
-                                        style: const TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0xFF2b2b2b),
+                              child: GestureDetector(
+                                onTap: isAuthenticated
+                                    ? null
+                                    : () => context.pushNamed(AppRouteName.phoneLogin),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          context.l10n.clickToLogin,
+                                          style: const TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xFF2b2b2b),
+                                          ),
                                         ),
-                                      ),
                                       SizedBox(width: spacing.xs),
                                       Container(
                                         padding: const EdgeInsets.symmetric(
@@ -144,6 +158,7 @@ class MyPage extends ConsumerWidget {
                                   ),
                                 ],
                               ),
+                            ),
                             ),
                             // 更多按钮
                             Container(
@@ -329,7 +344,7 @@ class MyPage extends ConsumerWidget {
             ),
           ),
 
-          // 平台规则 & 关于
+          // 平台规则 & 关于 & 切换角色
           SliverToBoxAdapter(
             child: _buildSectionCard(
               context,
@@ -341,7 +356,20 @@ class MyPage extends ConsumerWidget {
                     _buildOrderItem(context, 'assets/images/my/rules.png', context.l10n.rules, count: 0),
                     _buildOrderItem(context, 'assets/images/my/agreement.png', context.l10n.agreement, count: 0),
                     _buildOrderItem(context, 'assets/images/my/about.png', context.l10n.about, count: 0),
-                    const SizedBox(width: 46),
+                    GestureDetector(
+                      onTap: () {
+                        final nextRole = currentRole == UserRole.user
+                            ? UserRole.provider
+                            : UserRole.user;
+                        ref.read(userRoleControllerProvider.notifier).switchRole(nextRole);
+                      },
+                      child: _buildOrderItem(
+                        context,
+                        'assets/images/my/caregivers.png',
+                        context.l10n.switchRole,
+                        count: 0,
+                      ),
+                    ),
                     const SizedBox(width: 46),
                   ],
                 ),
@@ -350,42 +378,46 @@ class MyPage extends ConsumerWidget {
           ),
 
           // 退出登录
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: spacing.lg,
-                vertical: spacing.sm,
-              ),
-              child: Container(
-                height: 46,
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Color(0xFFffffff), Color(0xFFfafafa)],
-                  ),
-                  border: Border.all(color: const Color(0xFFeeeeee)),
-                  borderRadius: BorderRadius.circular(999),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.04),
-                      blurRadius: 8,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
+          if (isAuthenticated)
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: spacing.lg,
+                  vertical: spacing.sm,
                 ),
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () {},
+                child: Container(
+                  height: 46,
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [Color(0xFFffffff), Color(0xFFfafafa)],
+                    ),
+                    border: Border.all(color: const Color(0xFFeeeeee)),
                     borderRadius: BorderRadius.circular(999),
-                    child: Center(
-                      child: Text(
-                        context.l10n.logout,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFFff6a00),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.04),
+                        blurRadius: 8,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () async {
+                        await ref.read(authControllerProvider.notifier).signOut();
+                      },
+                      borderRadius: BorderRadius.circular(999),
+                      child: Center(
+                        child: Text(
+                          context.l10n.logout,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFFff6a00),
+                          ),
                         ),
                       ),
                     ),
@@ -393,7 +425,6 @@ class MyPage extends ConsumerWidget {
                 ),
               ),
             ),
-          ),
 
           // 版本号
           SliverToBoxAdapter(
@@ -537,7 +568,7 @@ class MyPage extends ConsumerWidget {
             top: 4,
             right: 11,
             child: Container(
-              minWidth: 16,
+              constraints: const BoxConstraints(minWidth: 16),
               height: 16,
               padding: const EdgeInsets.symmetric(horizontal: 4),
               decoration: BoxDecoration(
