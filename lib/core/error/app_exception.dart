@@ -7,6 +7,7 @@ enum AppExceptionType {
   conflict,
   server,
   validation,
+  business,
   unknown,
 }
 

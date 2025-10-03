@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../app/env/app_env_provider.dart';
 import '../auth/auth_controller.dart';
 import '../error/error_mapper.dart';
+import 'api_response_interceptor.dart';
 import 'api_result.dart';
 
 final dioProvider = Provider<Dio>((ref) {
@@ -27,8 +28,10 @@ final dioProvider = Provider<Dio>((ref) {
     dio.options.headers['Authorization'] = 'Bearer $token';
   }
 
+  dio.interceptors.add(ApiResponseInterceptor());
+
   if (env.enableNetworkLogs) {
-    dio.interceptors.add(LogInterceptor( requestBody: true, responseBody: true));
+    dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
   }
 
   return dio;
