@@ -91,4 +91,157 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get orderWelcome => '订单页面';
+
+  @override
+  String get loginWelcome => 'Hello，欢迎来到宠信。';
+
+  @override
+  String get loginWechat => '微信一键登录';
+
+  @override
+  String get loginLoading => '登录中...';
+
+  @override
+  String get loginPhoneLabel => '手机号登录';
+
+  @override
+  String get loginAgreePrefix => '我已阅读并同意';
+
+  @override
+  String get loginTerms => '《服务条款》';
+
+  @override
+  String get loginAnd => '与';
+
+  @override
+  String get loginPrivacy => '《隐私协议》';
+
+  @override
+  String get loginTitle => '登录';
+
+  @override
+  String get goToLogin => '前往登录';
+
+  @override
+  String get phoneLoginTitle => '宠信平台';
+
+  @override
+  String get phoneLoginSubtitle => '手机号快捷登录';
+
+  @override
+  String get phoneInputHint => '请输入手机号';
+
+  @override
+  String get phoneInputTip => '我们将发送验证码至此手机号';
+
+  @override
+  String get getVerifyCode => '获取验证码';
+
+  @override
+  String get sendingCode => '发送中...';
+
+  @override
+  String get loginAgreeLabel => '登录即表示同意';
+
+  @override
+  String get userAgreement => '《用户协议》';
+
+  @override
+  String get and => '和';
+
+  @override
+  String get privacyPolicy => '《隐私政策》';
+
+  @override
+  String get enterVerifyCode => '请输入验证码';
+
+  @override
+  String codeSentTo(String phone) {
+    return '验证码已发送至 $phone';
+  }
+
+  @override
+  String get resendCode => '重新发送';
+
+  @override
+  String resendAfter(String seconds) {
+    return '${seconds}s后重发';
+  }
+
+  @override
+  String get loginButton => '登录';
+
+  @override
+  String get clickToLogin => '点击登录';
+
+  @override
+  String get normalMember => '普通会员';
+
+  @override
+  String get memberCenter => '会员中心';
+
+  @override
+  String get coupon => '优惠券';
+
+  @override
+  String get favorite => '收藏';
+
+  @override
+  String get address => '地址';
+
+  @override
+  String get becomeCaregiver => '成为服务者';
+
+  @override
+  String get myOrder => '我的订单';
+
+  @override
+  String get toPay => '待付款';
+
+  @override
+  String get toStart => '待开始';
+
+  @override
+  String get checkIn => '待签到';
+
+  @override
+  String get toEvaluate => '待评价';
+
+  @override
+  String get refund => '退款';
+
+  @override
+  String get wallet => '钱包';
+
+  @override
+  String get account => '账户';
+
+  @override
+  String get ticket => '券包';
+
+  @override
+  String get insurance => '保险';
+
+  @override
+  String get term => '期限';
+
+  @override
+  String get rules => '平台规则';
+
+  @override
+  String get agreement => '协议';
+
+  @override
+  String get about => '关于';
+
+  @override
+  String get logout => '退出登录';
+
+  @override
+  String version(String version) {
+    return '版本 $version';
+  }
+
+  @override
+  String get all => '全部';
 }

@@ -47,7 +47,7 @@ class HomePage extends ConsumerWidget {
                         Container(
                           padding: EdgeInsets.all(spacing.md),
                           decoration: BoxDecoration(
-                            color: colors.primary.withOpacity(0.08),
+                            color: colors.primary.withValues(alpha: 0.08),
                             borderRadius: BorderRadius.circular(theme.radii.md),
                           ),
                           child: Column(

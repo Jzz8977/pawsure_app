@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/auth/presentation/login_page.dart';
+import '../../features/auth/presentation/phone_login_page.dart';
 import '../../features/home/presentation/home_page.dart';
 import '../../features/main/presentation/main_container_page.dart';
 import '../../features/my/presentation/my_page.dart';
@@ -16,6 +18,8 @@ import 'router_notifier.dart';
 class AppRoutePath {
   const AppRoutePath._();
 
+  static const String login = '/login';
+  static const String phoneLogin = '/phone-login';
   static const String home = '/home';
   static const String pet = '/pet';
   static const String my = '/my';
@@ -28,6 +32,8 @@ class AppRoutePath {
 class AppRouteName {
   const AppRouteName._();
 
+  static const String login = 'login';
+  static const String phoneLogin = 'phoneLogin';
   static const String home = 'home';
   static const String pet = 'pet';
   static const String my = 'my';
@@ -55,6 +61,16 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     initialLocation: AppRoutePath.home,
     refreshListenable: routerNotifier,
     routes: <RouteBase>[
+      GoRoute(
+        path: AppRoutePath.login,
+        name: AppRouteName.login,
+        builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
+        path: AppRoutePath.phoneLogin,
+        name: AppRouteName.phoneLogin,
+        builder: (context, state) => const PhoneLoginPage(),
+      ),
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
         builder: (context, state, child) {

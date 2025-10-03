@@ -1,11 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../app/l10n/l10n.dart';
 import '../../app/theme/app_theme.dart';
 import '../../core/auth/user_role_controller.dart';
-import '../../l10n/app_localizations.dart';
 import '../config/navigation_config.dart';
 import '../models/navigation_item.dart';
 import 'app_svg_icon.dart';
@@ -25,29 +25,44 @@ class AppBottomNavigationBar extends ConsumerWidget {
     final currentIndex = _getCurrentIndex(items, currentRoute);
     final theme = Theme.of(context);
     final colors = theme.colors;
+    final spacing = theme.spacing;
+    final radii = theme.radii;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: colors.background,
-        boxShadow: [
-          BoxShadow(
-            color: colors.onBackground.withValues(alpha: 0.05),
-            blurRadius: 8,
-            offset: const Offset(0, -2),
+    return Positioned(
+      left: 0,
+      right: 0,
+      bottom: spacing.md,
+      child: Center(
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 240),
+          height: 64,
+          margin: EdgeInsets.symmetric(horizontal: spacing.lg),
+          padding: EdgeInsets.all(spacing.xs),
+          decoration: BoxDecoration(
+            color: colors.onBackground.withValues(alpha: 0.28),
+            borderRadius: BorderRadius.circular(radii.lg * 2),
+            boxShadow: [
+              BoxShadow(
+                color: colors.onBackground.withValues(alpha: 0.15),
+                blurRadius: 16,
+                offset: const Offset(0, 4),
+              ),
+            ],
           ),
-        ],
-      ),
-      child: SafeArea(
-        child: SizedBox(
-          height: 56,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: List.generate(
-              items.length,
-              (index) => _NavigationBarItem(
-                item: items[index],
-                isActive: currentIndex == index,
-                onTap: () => _onItemTapped(context, items[index].route),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(radii.lg * 2),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: List.generate(
+                  items.length,
+                  (index) => _NavigationBarItem(
+                    item: items[index],
+                    isActive: currentIndex == index,
+                    onTap: () => _onItemTapped(context, items[index].route),
+                  ),
+                ),
               ),
             ),
           ),
@@ -89,55 +104,29 @@ class _NavigationBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colors = theme.colors;
-    final spacing = theme.spacing;
-    final l10n = context.l10n;
 
-    final label = _getLabel(l10n, item.labelKey);
     final iconPath = isActive ? item.activeIconPath : item.iconPath;
-    final color = isActive ? colors.primary : colors.onBackground.withValues(alpha: 0.6);
 
     return Expanded(
-      child: InkWell(
+      child: GestureDetector(
         onTap: onTap,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AppSvgIcon(
+        child: Container(
+          width: 52,
+          height: 52,
+          decoration: BoxDecoration(
+            color: isActive ? colors.background : Colors.transparent,
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: AppSvgIcon(
               assetPath: iconPath,
-              width: 24,
-              height: 24,
-              color: color,
+              width: 28,
+              height: 28,
+              color: isActive ? colors.primary : colors.background,
             ),
-            SizedBox(height: spacing.xs),
-            Text(
-              label,
-              style: theme.textTheme.labelSmall?.copyWith(
-                color: color,
-                fontSize: 12,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
+          ),
         ),
       ),
     );
-  }
-
-  String _getLabel(AppLocalizations l10n, String key) {
-    switch (key) {
-      case 'navHome':
-        return l10n.navHome;
-      case 'navPet':
-        return l10n.navPet;
-      case 'navMy':
-        return l10n.navMy;
-      case 'navProviderHome':
-        return l10n.navProviderHome;
-      case 'navOrder':
-        return l10n.navOrder;
-      default:
-        return key;
-    }
   }
 }

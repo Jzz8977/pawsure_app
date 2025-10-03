@@ -46,5 +46,75 @@
   "providerHomeTitle": "服务者首页",
   "providerHomeWelcome": "服务者首页",
   "orderTitle": "订单",
-  "orderWelcome": "订单页面"
+  "orderWelcome": "订单页面",
+  "loginWelcome": "Hello，欢迎来到宠信。",
+  "loginWechat": "微信一键登录",
+  "loginLoading": "登录中...",
+  "loginPhoneLabel": "手机号登录",
+  "loginAgreePrefix": "我已阅读并同意",
+  "loginTerms": "《服务条款》",
+  "loginAnd": "与",
+  "loginPrivacy": "《隐私协议》",
+  "loginTitle": "登录",
+  "goToLogin": "前往登录",
+  "phoneLoginTitle": "宠信平台",
+  "phoneLoginSubtitle": "手机号快捷登录",
+  "phoneInputHint": "请输入手机号",
+  "phoneInputTip": "我们将发送验证码至此手机号",
+  "getVerifyCode": "获取验证码",
+  "sendingCode": "发送中...",
+  "loginAgreeLabel": "登录即表示同意",
+  "userAgreement": "《用户协议》",
+  "and": "和",
+  "privacyPolicy": "《隐私政策》",
+  "enterVerifyCode": "请输入验证码",
+  "codeSentTo": "验证码已发送至 {phone}",
+  "@codeSentTo": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "resendCode": "重新发送",
+  "resendAfter": "{seconds}s后重发",
+  "@resendAfter": {
+    "placeholders": {
+      "seconds": {
+        "type": "String"
+      }
+    }
+  },
+  "loginButton": "登录",
+  "clickToLogin": "点击登录",
+  "normalMember": "普通会员",
+  "memberCenter": "会员中心",
+  "coupon": "优惠券",
+  "favorite": "收藏",
+  "address": "地址",
+  "becomeCaregiver": "成为服务者",
+  "myOrder": "我的订单",
+  "toPay": "待付款",
+  "toStart": "待开始",
+  "checkIn": "待签到",
+  "toEvaluate": "待评价",
+  "refund": "退款",
+  "wallet": "钱包",
+  "account": "账户",
+  "ticket": "券包",
+  "insurance": "保险",
+  "term": "期限",
+  "rules": "平台规则",
+  "agreement": "协议",
+  "about": "关于",
+  "logout": "退出登录",
+  "version": "版本 {version}",
+  "@version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "all": "全部"
 }

@@ -94,4 +94,157 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get orderWelcome => 'Order Page';
+
+  @override
+  String get loginWelcome => 'Hello, Welcome to Pawsure.';
+
+  @override
+  String get loginWechat => 'WeChat Login';
+
+  @override
+  String get loginLoading => 'Logging in...';
+
+  @override
+  String get loginPhoneLabel => 'Phone Login';
+
+  @override
+  String get loginAgreePrefix => 'I have read and agree to';
+
+  @override
+  String get loginTerms => 'Terms of Service';
+
+  @override
+  String get loginAnd => 'and';
+
+  @override
+  String get loginPrivacy => 'Privacy Policy';
+
+  @override
+  String get loginTitle => 'Login';
+
+  @override
+  String get goToLogin => 'Go to Login';
+
+  @override
+  String get phoneLoginTitle => 'Pawsure Platform';
+
+  @override
+  String get phoneLoginSubtitle => 'Quick Login with Phone';
+
+  @override
+  String get phoneInputHint => 'Enter phone number';
+
+  @override
+  String get phoneInputTip => 'We will send verification code to this number';
+
+  @override
+  String get getVerifyCode => 'Get Code';
+
+  @override
+  String get sendingCode => 'Sending...';
+
+  @override
+  String get loginAgreeLabel => 'Login means you agree to';
+
+  @override
+  String get userAgreement => 'User Agreement';
+
+  @override
+  String get and => 'and';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get enterVerifyCode => 'Enter Verification Code';
+
+  @override
+  String codeSentTo(String phone) {
+    return 'Code sent to $phone';
+  }
+
+  @override
+  String get resendCode => 'Resend';
+
+  @override
+  String resendAfter(String seconds) {
+    return 'Resend after ${seconds}s';
+  }
+
+  @override
+  String get loginButton => 'Login';
+
+  @override
+  String get clickToLogin => 'Click to Login';
+
+  @override
+  String get normalMember => 'Normal Member';
+
+  @override
+  String get memberCenter => 'Member Center';
+
+  @override
+  String get coupon => 'Coupon';
+
+  @override
+  String get favorite => 'Favorite';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get becomeCaregiver => 'Become Caregiver';
+
+  @override
+  String get myOrder => 'My Orders';
+
+  @override
+  String get toPay => 'To Pay';
+
+  @override
+  String get toStart => 'To Start';
+
+  @override
+  String get checkIn => 'Check In';
+
+  @override
+  String get toEvaluate => 'To Evaluate';
+
+  @override
+  String get refund => 'Refund';
+
+  @override
+  String get wallet => 'Wallet';
+
+  @override
+  String get account => 'Account';
+
+  @override
+  String get ticket => 'Ticket';
+
+  @override
+  String get insurance => 'Insurance';
+
+  @override
+  String get term => 'Term';
+
+  @override
+  String get rules => 'Rules';
+
+  @override
+  String get agreement => 'Agreement';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String version(String version) {
+    return 'Version $version';
+  }
+
+  @override
+  String get all => 'All';
 }

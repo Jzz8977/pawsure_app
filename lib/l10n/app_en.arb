@@ -46,5 +46,75 @@
   "providerHomeTitle": "Provider Home",
   "providerHomeWelcome": "Provider Home Page",
   "orderTitle": "Order",
-  "orderWelcome": "Order Page"
+  "orderWelcome": "Order Page",
+  "loginWelcome": "Hello, Welcome to Pawsure.",
+  "loginWechat": "WeChat Login",
+  "loginLoading": "Logging in...",
+  "loginPhoneLabel": "Phone Login",
+  "loginAgreePrefix": "I have read and agree to",
+  "loginTerms": "Terms of Service",
+  "loginAnd": "and",
+  "loginPrivacy": "Privacy Policy",
+  "loginTitle": "Login",
+  "goToLogin": "Go to Login",
+  "phoneLoginTitle": "Pawsure Platform",
+  "phoneLoginSubtitle": "Quick Login with Phone",
+  "phoneInputHint": "Enter phone number",
+  "phoneInputTip": "We will send verification code to this number",
+  "getVerifyCode": "Get Code",
+  "sendingCode": "Sending...",
+  "loginAgreeLabel": "Login means you agree to",
+  "userAgreement": "User Agreement",
+  "and": "and",
+  "privacyPolicy": "Privacy Policy",
+  "enterVerifyCode": "Enter Verification Code",
+  "codeSentTo": "Code sent to {phone}",
+  "@codeSentTo": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "resendCode": "Resend",
+  "resendAfter": "Resend after {seconds}s",
+  "@resendAfter": {
+    "placeholders": {
+      "seconds": {
+        "type": "String"
+      }
+    }
+  },
+  "loginButton": "Login",
+  "clickToLogin": "Click to Login",
+  "normalMember": "Normal Member",
+  "memberCenter": "Member Center",
+  "coupon": "Coupon",
+  "favorite": "Favorite",
+  "address": "Address",
+  "becomeCaregiver": "Become Caregiver",
+  "myOrder": "My Orders",
+  "toPay": "To Pay",
+  "toStart": "To Start",
+  "checkIn": "Check In",
+  "toEvaluate": "To Evaluate",
+  "refund": "Refund",
+  "wallet": "Wallet",
+  "account": "Account",
+  "ticket": "Ticket",
+  "insurance": "Insurance",
+  "term": "Term",
+  "rules": "Rules",
+  "agreement": "Agreement",
+  "about": "About",
+  "logout": "Logout",
+  "version": "Version {version}",
+  "@version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "all": "All"
 }

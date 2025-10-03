@@ -1,0 +1,260 @@
+/* pages/my/my.wxss */
+
+@import "/css/index.wxss";
+/* ========= 页面容器 ========= */
+.page-container {
+  min-height: 100vh;
+  background: #EFF1F4;
+  color: #1f1f1f;
+}
+
+/* ========= 顶部区（渐变+头像+操作） ========= */
+.header-bg {
+  inset: 0 0 auto 0;
+  height: 448rpx;
+  border-bottom-left-radius: 24rpx;
+  border-bottom-right-radius: 24rpx;
+  background: linear-gradient(160deg, #FFD8B0 0%, #FFB78A 45%, #F5A37A 100%);
+}
+
+/* 影子元素 - 用于检测滚动位置 */
+.scroll-sentinel {
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.avatar-wrap {
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255,255,255,0.6);
+  overflow: hidden;
+  box-shadow: 0 6rpx 18rpx rgba(0,0,0,0.08);
+}
+.avatar { width: 100%; height: 100%; }
+
+.name-col { flex: 1; min-width: 0; }
+
+.name-line {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.name {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #2b2b2b;
+  max-width: 420rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.verify-badge {
+  width: 36rpx; height: 36rpx;
+}
+
+.verify-chip {
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+  font-size: 20rpx;
+  line-height: 28rpx;
+}
+.verify-chip.processing { color: #946200; background: #FFF7E6; }
+.verify-chip.unverified { color: #8c8c8c; background: #f3f3f3; }
+
+.sub-line {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-top: 8rpx;
+}
+.vip-text{
+  color: rgba(212, 135, 19, 1);
+}
+.level-chip {
+  gap: 6rpx;
+  height: 32rpx;
+  text-align: center;
+  text-indent: 10rpx;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(6rpx);
+  border: 1rpx solid rgba(255,255,255,0.9);
+}
+.level-icon { width: 52rpx; height: 48rpx; left: -14rpx;top: -6rpx }
+.phone { color: #444; font-size: 24rpx; }
+.bind-phone { color: #333; font-size: 24rpx; text-decoration: underline; }
+
+/* 右侧两个圆形按钮 */
+.header-actions {
+  display: flex;
+  gap: 16rpx;
+}
+.circle-btn {
+  width: 72rpx; height: 72rpx; border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8rpx 18rpx rgba(0,0,0,0.08);
+}
+.circle-icon { width: 40rpx; height: 40rpx; }
+
+/* 右下悬浮小圆按钮 */
+.header-fab {
+  position: absolute;
+  right: 24rpx;
+  bottom: -36rpx;
+  width: 96rpx; height: 96rpx; border-radius: 50%;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 12rpx 24rpx rgba(0,0,0,0.12);
+}
+.fab-icon { width: 44rpx; height: 44rpx; }
+
+/* ========= 会员条 ========= */
+.member{
+  height: 250rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.06);
+  background: linear-gradient( 180deg, rgba(255,255,255,0.41) 0%, rgba(255,255,255,0) 100%);
+}
+.member-strip {
+  padding: 22rpx 24rpx;
+  border-radius: 20rpx;
+}
+.member-left { display: flex; align-items: center; gap: 16rpx; }
+.member-label {
+  color: #CC9933;
+  font-size: 28rpx; font-weight: 600;
+}
+
+.stars { display: inline-flex; gap: 6rpx; }
+.star { color: #d8d8d8; font-size: 24rpx; }
+.star.on { color: #FF8C3D; }
+
+.member-right {
+  color: #333;
+  background: #FCDEA2;
+  padding:2rpx 18rpx;
+}
+.arrow { font-size: 32rpx; color: #c6c6c6; margin-left: 6rpx; }
+
+/* ========= 四宫格 ========= */
+.quick-grid {
+  height: 161rpx;
+}
+.quick-item {
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.06);
+  height: 100%;
+
+}
+.q-icon {
+  width: 72rpx;
+  height: 72rpx;
+  background: #F7F7F7;
+}
+.q-icon image {
+  width: 100%;
+  height: 100%;
+}
+.quick-item text {
+  color: #333;
+}
+
+/* ========= 通用卡片 ========= */
+.section-card {
+  margin: 0 24rpx 20rpx;
+  background: #fff;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.06);
+}
+.section-card-mt{
+  margin-top: 20rpx;
+}
+.section-title-row {
+  padding: 28rpx 24rpx 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.section-title {
+}
+.section-more {
+  color: #999;
+}
+
+/* ========= 订单五宫格 ========= */
+.order-grid {
+  padding: 10rpx 0 18rpx;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+}
+.order-item {
+  padding: 20rpx 0;
+  position: relative;
+  color: #333333;
+}
+.o-icon { width: 46rpx; height: 46rpx; margin: 0 auto 8rpx; }
+.o-icon image { width: 100%; height: 100%; }
+.order-item text { font-size: 24rpx; color: #333; }
+
+.dot-badge {
+  position: absolute;
+  top: 8rpx; right: 22rpx;
+  min-width: 32rpx; height: 32rpx;
+  padding: 0 8rpx;
+  border-radius: 999rpx;
+  background: #ff4d4f;
+  color: #fff; font-size: 20rpx;
+  display: flex; align-items: center; justify-content: center;
+}
+.about-grid {
+  padding: 20rpx 0 10rpx;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+}
+/* ========= 退出登录 ========= */
+.logout-wrap { padding: 8rpx 24rpx 0; }
+.logout-button {
+  height: 92rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+  border: 1rpx solid #eee;
+  color: #ff6a00;
+  font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8rpx 16rpx rgba(0,0,0,0.04);
+}
+
+/* ========= 底部 ========= */
+.footer-safe {
+  text-align: center;
+  color: #9aa0a6;
+  font-size: 22rpx;
+  padding: 24rpx 0 32rpx;
+}
+
+/* ========= 通用触摸反馈 ========= */
+.quick-item:active,
+.order-item:active,
+.wallet-item:active,
+.link-item:active,
+.service-row:active,
+.member-right:active,
+.logout-button:active,
+.circle-btn:active,
+.header-fab:active {
+  opacity: .7;
+}
+
+/* ========= 小屏适配（窄设备减小字号与间距） ========= */
+@media (max-width: 340px) {
+  .name { font-size: 32rpx; }
+  .member-strip { padding: 18rpx; }
+  .q-icon { width: 88rpx; height: 88rpx; }
+  .wallet-grid .w-icon { width: 80rpx; height: 80rpx; }
+}

@@ -16,9 +16,13 @@ class MainContainerPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      body: child,
-      bottomNavigationBar: AppBottomNavigationBar(
-        currentRoute: currentRoute,
+      body: Stack(
+        children: [
+          child,
+          AppBottomNavigationBar(
+            currentRoute: currentRoute,
+          ),
+        ],
       ),
     );
   }

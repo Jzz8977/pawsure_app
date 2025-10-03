@@ -1,0 +1,137 @@
+<!--pages/my/my.wxml-->
+<view class="page-container">
+  <!-- 顶部自定义导航：透明覆盖在渐变头图上 -->
+  <navigation-bar
+    id="main-nav-bar"
+    title="我的"
+    title-align="center"
+    background-color="transparent"
+    title-color="#ffffff"
+    enable-scroll-effect="{{true}}"
+    scroll-threshold="{{220}}"
+    scrolled-background="rgba(255, 255, 255, 0.95)"
+    scrolled-text-color="#333333"
+    bind:ready="onNavBarReady"
+    bind:scroll-change="onNavScrollChange">
+  </navigation-bar>
+  <view class="scroll-sentinel fx-absolute z--1" style="top: {{navBarHeight + 120}}px;"></view>
+
+  <!-- 顶部：渐变头图 + 头像姓名 + 右上角圆形按钮 -->
+  <view class="fx-px-lg fx-relative" style="padding-top:{{statusBarHeight + navBarHeight}}rpx">
+    <view class="header-bg fx-absolute"></view>
+  </view>
+  <view class="fx-relative z-5" >
+    <view class="header-row fx-px-xl fx-relative fx-row fx-items-center fx-gap-24"  bindtap="onEditProfile">
+      <view class="avatar-wrap">
+        <image src="{{avatarDisplayUrl || '/assets/default-avatar.png'}}" class="avatar" mode="aspectFill"/>
+      </view>
+
+      <view class="name-col">
+        <view class="fx-row fx-gap-12 fx-items-center">
+          <text class="name">{{ userInfo.token ? (userInfo.name || '极速小鱼') : '点击登录' }}</text>
+          <view class="verify-chip processing">^</view>
+        </view>
+        <view class="sub-line fx-relative">
+          <image class="level-icon fx-absolute z-1" src="/assets/vip/vip.png" mode="aspectFit"/>
+          <view class="level-chip fx-px-lg fx-bdr-18 fx-row fx-justify-center">
+            <text class="vip-text fx-text-22">普通</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="header-actions">
+        <view class="circle-btn">
+          <image src="/assets/icons/more-dots.png" class="circle-icon" mode="aspectFit"/>
+        </view>
+      </view>
+    </view>
+    <!-- 会员条：左侧“普通会员 ★☆☆☆☆”，右侧“会员中心 >” -->
+    <view class="fx-mt-md fx-column member">
+      <view class="member-strip fx-row fx-items-center fx-justify-between">
+        <view class="member-left">
+          <text class="member-label fx-bold fx-text-34">普通会员</text>
+          <view class="stars">
+            <text class="star on">★</text><text class="star">★</text><text class="star">★</text><text class="star">★</text><text class="star">★</text>
+          </view>
+        </view>
+        <view class="member-right fx-row fx-items-center fx-gap-4 fx-bdr-24" bindtap="onMemberTap">
+          <text class="fx-text-24">会员中心</text>
+          <text class="arrow">›</text>
+        </view>
+      </view>
+      <!-- 四宫格功能：优惠券 收藏 地址 成为看护师 -->
+      <view class="quick-grid fx-px-lg">
+        <view class="quick-item fx-row fx-pa-md fx-border-box fx-items-center fx-justify-center">
+          <view class=" fx-row fx-col fx-items-center fx-justify-around ">
+            <block wx:for="{{featureModules}}" wx:key="item.id">
+              <view class="fx-column fx-items-center fx-justify-center" data-id="{{item.id}}" data-route="{{item.route}}" bindtap="onFeatureModules">
+                <view class="q-icon"><image src="{{item.icon}}" mode="aspectFit"/></view>
+                <text class="fx-text-24 fx-mt-sm">{{item.title}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 我的订单（标题右侧“全部 >”） + 五个状态 -->
+    <view class="section-card section-card-mt fx-mt-xxl fx-bdr-18">
+      <view class="section-title-row fx-row fx-items-center fx-justify-between">
+        <text class="fx-bolder fx-text-30">我的订单</text>
+        <view class="section-more fx-row fx-items-center" bindtap="onOrderStatusTap" data-status="all">
+          <text class="fx-text-22">全部</text><text class="arrow">›</text>
+        </view>
+      </view>
+      <view class="order-grid">
+        <block wx:for="{{ticketModules}}" wx:key="status">
+          <view class="order-item" bindtap="onOrderStatusTap" data-status="{{item.status}}">
+            <view class="o-icon"><image src="{{item.icon}}" mode="aspectFit"/></view>
+            <text class="fx-text-24">{{item.title}}</text>
+            <view wx:if="{{item.count>0}}" class="dot-badge">{{item.count>99?'99+':item.count}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 我的订单（标题右侧“全部 >”） + 五个状态 -->
+    <view class="section-card  fx-mt-xxl fx-bdr-18">
+      <view class="section-title-row fx-row fx-items-center fx-justify-between">
+        <text class="fx-bolder fx-text-30">钱包</text>
+      </view>
+      <view class="order-grid">
+        <block wx:for="{{walletModules}}" wx:key="status">
+          <view class="order-item" bindtap="onWalletTap" data-status="{{item.status}}">
+            <view class="o-icon"><image src="{{item.icon}}" mode="aspectFit"/></view>
+            <text class="fx-text-24">{{item.title}}</text>
+            <view wx:if="{{item.count>0}}" class="dot-badge">{{item.count>99?'99+':item.count}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 平台规则 & 关于宠信 -->
+    <view class="section-card  fx-mt-xxl fx-bdr-18">
+      <view class="about-grid">
+        <block wx:for="{{aboutModules}}" wx:key="status">
+          <view class="order-item" bindtap="onWalletTap" data-status="{{item.status}}">
+            <view class="o-icon"><image src="{{item.icon}}" mode="aspectFit"/></view>
+            <text class="fx-text-24">{{item.title}}</text>
+            <view wx:if="{{item.count>0}}" class="dot-badge">{{item.count>99?'99+':item.count}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 退出登录 -->
+    <view wx:if="{{userInfo.token}}" class="logout-wrap">
+      <view class="logout-button" bindtap="onLogout"><text>退出登录</text></view>
+    </view>
+
+    <!-- 版本号 & 底部安全区 -->
+    <view class="footer-safe">
+      <text class="version-text">版本 {{appVersion}}</text>
+      <view style="height: env(safe-area-inset-bottom);"></view>
+    </view>
+  </view>
+
+</view>

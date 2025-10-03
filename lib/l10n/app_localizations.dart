@@ -253,6 +253,300 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Order Page'**
   String get orderWelcome;
+
+  /// No description provided for @loginWelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello, Welcome to Pawsure.'**
+  String get loginWelcome;
+
+  /// No description provided for @loginWechat.
+  ///
+  /// In en, this message translates to:
+  /// **'WeChat Login'**
+  String get loginWechat;
+
+  /// No description provided for @loginLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Logging in...'**
+  String get loginLoading;
+
+  /// No description provided for @loginPhoneLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Login'**
+  String get loginPhoneLabel;
+
+  /// No description provided for @loginAgreePrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'I have read and agree to'**
+  String get loginAgreePrefix;
+
+  /// No description provided for @loginTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get loginTerms;
+
+  /// No description provided for @loginAnd.
+  ///
+  /// In en, this message translates to:
+  /// **'and'**
+  String get loginAnd;
+
+  /// No description provided for @loginPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get loginPrivacy;
+
+  /// No description provided for @loginTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get loginTitle;
+
+  /// No description provided for @goToLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to Login'**
+  String get goToLogin;
+
+  /// No description provided for @phoneLoginTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pawsure Platform'**
+  String get phoneLoginTitle;
+
+  /// No description provided for @phoneLoginSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Login with Phone'**
+  String get phoneLoginSubtitle;
+
+  /// No description provided for @phoneInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter phone number'**
+  String get phoneInputHint;
+
+  /// No description provided for @phoneInputTip.
+  ///
+  /// In en, this message translates to:
+  /// **'We will send verification code to this number'**
+  String get phoneInputTip;
+
+  /// No description provided for @getVerifyCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Code'**
+  String get getVerifyCode;
+
+  /// No description provided for @sendingCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending...'**
+  String get sendingCode;
+
+  /// No description provided for @loginAgreeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Login means you agree to'**
+  String get loginAgreeLabel;
+
+  /// No description provided for @userAgreement.
+  ///
+  /// In en, this message translates to:
+  /// **'User Agreement'**
+  String get userAgreement;
+
+  /// No description provided for @and.
+  ///
+  /// In en, this message translates to:
+  /// **'and'**
+  String get and;
+
+  /// No description provided for @privacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicy;
+
+  /// No description provided for @enterVerifyCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Verification Code'**
+  String get enterVerifyCode;
+
+  /// No description provided for @codeSentTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Code sent to {phone}'**
+  String codeSentTo(String phone);
+
+  /// No description provided for @resendCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend'**
+  String get resendCode;
+
+  /// No description provided for @resendAfter.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend after {seconds}s'**
+  String resendAfter(String seconds);
+
+  /// No description provided for @loginButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get loginButton;
+
+  /// No description provided for @clickToLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Click to Login'**
+  String get clickToLogin;
+
+  /// No description provided for @normalMember.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal Member'**
+  String get normalMember;
+
+  /// No description provided for @memberCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Member Center'**
+  String get memberCenter;
+
+  /// No description provided for @coupon.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon'**
+  String get coupon;
+
+  /// No description provided for @favorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite'**
+  String get favorite;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// No description provided for @becomeCaregiver.
+  ///
+  /// In en, this message translates to:
+  /// **'Become Caregiver'**
+  String get becomeCaregiver;
+
+  /// No description provided for @myOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'My Orders'**
+  String get myOrder;
+
+  /// No description provided for @toPay.
+  ///
+  /// In en, this message translates to:
+  /// **'To Pay'**
+  String get toPay;
+
+  /// No description provided for @toStart.
+  ///
+  /// In en, this message translates to:
+  /// **'To Start'**
+  String get toStart;
+
+  /// No description provided for @checkIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Check In'**
+  String get checkIn;
+
+  /// No description provided for @toEvaluate.
+  ///
+  /// In en, this message translates to:
+  /// **'To Evaluate'**
+  String get toEvaluate;
+
+  /// No description provided for @refund.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund'**
+  String get refund;
+
+  /// No description provided for @wallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet'**
+  String get wallet;
+
+  /// No description provided for @account.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get account;
+
+  /// No description provided for @ticket.
+  ///
+  /// In en, this message translates to:
+  /// **'Ticket'**
+  String get ticket;
+
+  /// No description provided for @insurance.
+  ///
+  /// In en, this message translates to:
+  /// **'Insurance'**
+  String get insurance;
+
+  /// No description provided for @term.
+  ///
+  /// In en, this message translates to:
+  /// **'Term'**
+  String get term;
+
+  /// No description provided for @rules.
+  ///
+  /// In en, this message translates to:
+  /// **'Rules'**
+  String get rules;
+
+  /// No description provided for @agreement.
+  ///
+  /// In en, this message translates to:
+  /// **'Agreement'**
+  String get agreement;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version}'**
+  String version(String version);
+
+  /// No description provided for @all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
 }
 
 class _AppLocalizationsDelegate
