@@ -28,7 +28,19 @@ final dioProvider = Provider<Dio>((ref) {
     dio.options.headers['Authorization'] = 'Bearer $token';
   }
 
-  dio.interceptors.add(ApiResponseInterceptor());
+  // 添加响应拦截器
+  dio.interceptors.add(
+    ApiResponseInterceptor(
+      onTokenUpdate: (token) {
+        // TODO: 更新 token 到 authController
+        // ref.read(authControllerProvider.notifier).updateToken(token);
+      },
+      onLoginRequired: () {
+        // TODO: 清除登录态并跳转到登录页
+        // ref.read(authControllerProvider.notifier).logout();
+      },
+    ),
+  );
 
   if (env.enableNetworkLogs) {
     dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
@@ -108,7 +120,16 @@ class AppHttpClient {
   ) async {
     try {
       final response = await send();
-      final result = decoder(response.data);
+
+      // 提取 content 字段作为实际数据
+      Object? actualData = response.data;
+      if (response.data is Map<String, dynamic>) {
+        final data = response.data as Map<String, dynamic>;
+        // 优先使用 content 字段，其次是 data 字段
+        actualData = data['content'] ?? data['data'] ?? response.data;
+      }
+
+      final result = decoder(actualData);
       return ApiSuccess<T>(result);
     } catch (error, stackTrace) {
       final exception = _errorMapper.map(error, stackTrace: stackTrace);
